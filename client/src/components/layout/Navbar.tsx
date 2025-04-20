@@ -14,13 +14,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white/90 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-100">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <i className="bx bxs-camera text-3xl text-[var(--deep-purple)] mr-2"></i>
-          <span className="font-poppins font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-[var(--deep-purple)] to-[var(--light-pink)]">SnapBooth</span>
+          <span className="font-poppins font-semibold text-xl">SnapBooth</span>
         </Link>
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-6">
           <Link 
             href="/" 
             className={`font-medium hover:text-[var(--deep-purple)] transition-colors ${location === '/' ? 'text-[var(--deep-purple)]' : ''}`}
@@ -44,14 +44,6 @@ const Navbar = () => {
             className={`font-medium hover:text-[var(--deep-purple)] transition-colors ${location === '/faq' ? 'text-[var(--deep-purple)]' : ''}`}
           >
             FAQs
-          </Link>
-        </div>
-        <div className="hidden md:block">
-          <Link 
-            href="/photobooth" 
-            className="px-6 py-2 rounded-full bg-gradient-to-r from-[var(--deep-purple)] to-[var(--light-pink)] text-white font-medium shadow-md hover:shadow-lg transition-all"
-          >
-            Start Capturing
           </Link>
         </div>
         <button 
@@ -91,13 +83,6 @@ const Navbar = () => {
             onClick={closeMobileMenu}
           >
             FAQs
-          </Link>
-          <Link 
-            href="/photobooth" 
-            className="mt-3 px-6 py-2 rounded-full bg-gradient-to-r from-[var(--deep-purple)] to-[var(--light-pink)] text-white font-medium text-center"
-            onClick={closeMobileMenu}
-          >
-            Start Capturing
           </Link>
         </div>
       </div>
