@@ -105,11 +105,15 @@ const PhotoStrip = () => {
   return (
     <div 
       ref={photoStripRef}
-      className="polaroid max-w-xs w-full relative"
-      style={{ paddingBottom: includeDateOnStrip ? "2rem" : "1rem" }}
+      className="polaroid max-w-xs w-full relative shadow-xl"
+      style={{ 
+        paddingBottom: includeDateOnStrip ? "2rem" : "1rem",
+        border: "1px solid rgba(0,0,0,0.1)",
+        borderRadius: "4px"
+      }}
     >
       <div 
-        className={`grid grid-cols-1 gap-2 ${
+        className={`grid grid-cols-1 gap-2 rounded ${
           background === 'gradient' ? 'bg-gradient-to-r from-[var(--lavender)] to-[var(--light-pink)]' : 
           background === 'hearts' ? 'bg-[var(--light-gray)] hearts-bg' : 
           background === 'custom' ? 'custom-bg' : 'bg-white'
@@ -126,10 +130,10 @@ const PhotoStrip = () => {
               <img 
                 src={photo} 
                 alt={`Captured photo ${index + 1}`}
-                className={`w-full rounded ${getFilterClass()}`}
+                className={`w-full rounded border border-white/50 shadow-sm ${getFilterClass()}`}
               />
             ) : (
-              <div className="w-full aspect-[3/4] bg-gray-200 rounded flex items-center justify-center">
+              <div className="w-full aspect-[3/4] bg-gray-200/70 backdrop-blur-sm rounded border border-white/50 flex items-center justify-center">
                 <span className="text-gray-400">Awaiting photo</span>
               </div>
             )}
@@ -137,14 +141,16 @@ const PhotoStrip = () => {
         ))}
         
         {includeDateOnStrip && (
-          <p className="text-center mt-2 font-medium text-sm">{currentDate}</p>
+          <p className="text-center mt-2 font-medium text-sm bg-white/30 backdrop-blur-sm rounded py-1 px-2 shadow-sm">
+            {currentDate}
+          </p>
         )}
         
         {/* Render stickers */}
         {stickers.map((sticker, index) => (
           <div 
             key={index}
-            className="absolute"
+            className="absolute drop-shadow-sm"
             style={{
               top: `${sticker.position.y}px`,
               left: `${sticker.position.x}px`,
