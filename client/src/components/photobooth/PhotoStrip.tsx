@@ -109,12 +109,15 @@ const PhotoStrip = () => {
       style={{ paddingBottom: includeDateOnStrip ? "2rem" : "1rem" }}
     >
       <div 
-        className={`grid grid-cols-1 gap-2`}
+        className={`grid grid-cols-1 gap-2 ${
+          background === 'gradient' ? 'bg-gradient-to-r from-[var(--lavender)] to-[var(--light-pink)]' : 
+          background === 'hearts' ? 'bg-[var(--light-gray)] hearts-bg' : 
+          background === 'custom' ? 'custom-bg' : 'bg-white'
+        }`}
         style={{ 
           padding: "8px",
           boxSizing: "border-box",
-          position: "relative",
-          ...getBackgroundStyle()
+          position: "relative" 
         }}
       >
         {photosToShow.map((photo, index) => (

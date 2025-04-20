@@ -17,7 +17,8 @@ const CameraView = ({ onStartCapture, onCaptureComplete, isCapturing }: CameraVi
     addCapturedPhoto,
     resetCapture,
     setIsCapturing,
-    filter
+    filter,
+    capturedPhotos
   } = usePhotoboothStore();
   
   const [countdown, setCountdown] = useState<number | null>(null);
@@ -183,6 +184,26 @@ const CameraView = ({ onStartCapture, onCaptureComplete, isCapturing }: CameraVi
               className="bg-gradient-to-r from-[var(--lavender)] to-[var(--deep-purple)] h-4 rounded-full transition-all duration-300"
               style={{ width: `${captureProgress}%` }}
             ></div>
+          </div>
+        </div>
+      )}
+      
+      {/* Preview of captured photos */}
+      {capturedPhotos.length > 0 && !isCapturing && (
+        <div className="bg-[var(--light-gray)] rounded-lg p-4 mb-6">
+          <h4 className="font-medium text-sm mb-2">Last Captured Photo:</h4>
+          <div className="flex overflow-x-auto py-2 gap-2">
+            <div className="w-20 h-20 flex-shrink-0 rounded overflow-hidden border-2 border-[var(--deep-purple)]">
+              <img 
+                src={capturedPhotos[0]} 
+                alt="First captured photo" 
+                className={`w-full h-full object-cover ${getFilterClass()}`}
+              />
+            </div>
+            <div className="flex-1 flex flex-col justify-center text-sm text-gray-600">
+              <p>Photos Taken: {capturedPhotos.length}/{numPhotos}</p>
+              <p className="text-xs mt-1">Continue capturing or click "Start Capture" to retake all photos</p>
+            </div>
           </div>
         </div>
       )}
