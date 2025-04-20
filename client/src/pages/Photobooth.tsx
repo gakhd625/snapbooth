@@ -22,7 +22,8 @@ const Photobooth = () => {
   
   const handleStartCapture = () => {
     setShowPhotoStrip(false);
-    startCapture();
+    setIsCapturing(true);
+    resetCapture();
   };
   
   const handleCaptureComplete = () => {
@@ -94,7 +95,7 @@ const Photobooth = () => {
                       Retake Photos
                     </button>
                     <button 
-                      onClick={() => {}}
+                      onClick={() => window.dispatchEvent(new CustomEvent('download-photo-strip'))}
                       className="gradient-btn text-white font-poppins font-medium py-2 px-6 rounded-full shadow-md hover:shadow-lg transition-all"
                       disabled={capturedPhotos.length === 0}
                     >

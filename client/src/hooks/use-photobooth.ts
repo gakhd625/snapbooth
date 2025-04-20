@@ -50,13 +50,7 @@ export const usePhotoboothStore = create<PhotoboothState>((set, get) => ({
   
   setIsCapturing: (isCapturing) => set({ isCapturing }),
   
-  startCapture: () => {
-    const { layout } = get();
-    set({ 
-      isCapturing: true,
-      capturedPhotos: [] 
-    });
-  },
+  // Removed startCapture as it's handled directly in the component
   
   resetCapture: () => set({ capturedPhotos: [] }),
   
